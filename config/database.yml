@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: event
+  pool: 5
+  username: admin
+  password: 1234

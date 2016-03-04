@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @occasion.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @occasion.description %>
+</p>
+
+<p>
+  <strong>Date time:</strong>
+  <%= @occasion.date_time %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @occasion.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @occasion.time %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @occasion.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @occasion.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_occasion_path(@occasion) %> |
+<%= link_to 'Back', occasions_path %>
