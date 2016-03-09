@@ -20,16 +20,12 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :date_time %><br>
-    <%= f.datetime_select :date_time %>
+    <%= f.label :venue %><br>
+    <%= f.text_field :venue %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.text_field :date %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    <%= f.datetime_select :date %>
   </div>
   <div class="field">
     <%= f.label :latitude %><br>
@@ -39,7 +35,22 @@
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude %>
   </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<div id="us2" style="width: 500px; height: 400px;"></div>
+<script>$('#us2').locationpicker({
+  location: {latitude: 46.15242437752303, longitude: 2.7470703125}, 
+  radius: 300,
+  inputBinding: {
+        latitudeInput: $('#occasion_latitude'),
+        longitudeInput: $('#occasion_longitude'),
+        locationNameInput: $('#occasion_venue')
+    }
+  });
+</script>

@@ -3,17 +3,17 @@
 one:
   name: MyString
   description: MyString
-  date_time: 2016-03-04 18:40:41
-  date: MyString
-  time: MyString
-  latitude: 9.99
-  longitude: 9.99
+  venue: MyString
+  date: 2016-03-09 23:31:40
+  latitude: 
+  longitude: 
+  user_id: 
 
 two:
   name: MyString
   description: MyString
-  date_time: 2016-03-04 18:40:41
-  date: MyString
-  time: MyString
-  latitude: 9.99
-  longitude: 9.99
+  venue: MyString
+  date: 2016-03-09 23:31:40
+  latitude: 
+  longitude: 
+  user_id: 

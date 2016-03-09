@@ -11,18 +11,13 @@
 </p>
 
 <p>
-  <strong>Date time:</strong>
-  <%= @occasion.date_time %>
+  <strong>Venue:</strong>
+  <%= @occasion.venue %>
 </p>
 
 <p>
   <strong>Date:</strong>
   <%= @occasion.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @occasion.time %>
 </p>
 
 <p>
@@ -33,6 +28,11 @@
 <p>
   <strong>Longitude:</strong>
   <%= @occasion.longitude %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @occasion.user %>
 </p>
 
 <%= link_to 'Edit', edit_occasion_path(@occasion) %> |

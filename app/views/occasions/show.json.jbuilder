@@ -1,1 +1,1 @@
-json.extract! @occasion, :id, :name, :description, :date_time, :date, :time, :latitude, :longitude, :created_at, :updated_at
+json.extract! @occasion, :id, :name, :description, :venue, :date, :latitude, :longitude, :user_id, :created_at, :updated_at

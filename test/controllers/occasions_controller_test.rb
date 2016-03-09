@@ -18,7 +18,7 @@ class OccasionsControllerTest < ActionController::TestCase
 
   test "should create occasion" do
     assert_difference('Occasion.count') do
-      post :create, occasion: { date: @occasion.date, date_time: @occasion.date_time, description: @occasion.description, latitude: @occasion.latitude, longitude: @occasion.longitude, name: @occasion.name, time: @occasion.time }
+      post :create, occasion: { date: @occasion.date, description: @occasion.description, latitude: @occasion.latitude, longitude: @occasion.longitude, name: @occasion.name, user_id: @occasion.user_id, venue: @occasion.venue }
     end
 
     assert_redirected_to occasion_path(assigns(:occasion))
@@ -35,7 +35,7 @@ class OccasionsControllerTest < ActionController::TestCase
   end
 
   test "should update occasion" do
-    patch :update, id: @occasion, occasion: { date: @occasion.date, date_time: @occasion.date_time, description: @occasion.description, latitude: @occasion.latitude, longitude: @occasion.longitude, name: @occasion.name, time: @occasion.time }
+    patch :update, id: @occasion, occasion: { date: @occasion.date, description: @occasion.description, latitude: @occasion.latitude, longitude: @occasion.longitude, name: @occasion.name, user_id: @occasion.user_id, venue: @occasion.venue }
     assert_redirected_to occasion_path(assigns(:occasion))
   end
 

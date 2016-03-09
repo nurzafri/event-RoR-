@@ -3,11 +3,11 @@ class CreateOccasions < ActiveRecord::Migration
     create_table :occasions do |t|
       t.string :name
       t.string :description
-      t.datetime :date_time
-      t.string :date
-      t.string :time
+      t.string :venue
+      t.datetime :date
       t.decimal :latitude
       t.decimal :longitude
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
