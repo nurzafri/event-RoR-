@@ -1,4 +1,4 @@
-<%= form_for(@occasion) do |f| %>
+<%= form_for(@occasion, html: {autocomplete: 'off', class: 'col l12'}) do |f| %> 
   <% if @occasion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@occasion.errors.count, "error") %> prohibited this occasion from being saved:</h2>
@@ -11,26 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="row">
+    <div class="input-field col l6">
+      <%= f.text_field :name, autocomplete: 'off', class: 'validate' %>
+      <%= f.label :name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+
+      <div class="row">
+    <div class="input-field col l6">
+      <%= f.text_field :description, autocomplete: 'off', class: 'validate' %>
+      <%= f.label :description %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :venue %><br>
-    <%= f.text_field :venue, class: "placepicker", "data-map-container-id"=> "collapseOne" %>
+
+      <div class="row">
+    <div class="input-field col l6">
+      <%= f.text_field :venue, autocomplete: 'off', class: 'validate' %>
+      <%= f.label :venue %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+
+  <div class="row">
+    <div class="input-field col l6 datetime">
+      <%= f.label :date %><br>
+      <%= f.datetime_select :date %>
+    </div>
   </div>
-    <%= f.text_field :latitude, hidden: true %>
-    <%= f.text_field :longitude, hidden: true %>
-  <div class="actions">
-    <%= f.submit %>
+
+    <%= f.text_field :latitude, hidden: false %>
+    <%= f.text_field :longitude, hidden: false %>
+  
+  <div class="row">
+    <div class="col l6">
+      <%= f.submit class: "btn waves-effect" %>
+    </div>
   </div>
 
 <!--<style type="text/css">
@@ -101,11 +116,13 @@
 
         marker.addListener('dragend', function(e) {
         console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        updateLatLng(e.latLng);
         });
 
         google.maps.event.addListener(map, 'click', function (e) {
                 console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
                 placeMarker(e.latLng);
+                updateLatLng(e.latLng);
 
             });
 
@@ -118,6 +135,12 @@
         //   console.log(e.getPosition())
         // });
       }
+
+      function updateLatLng(latLng){
+        $('#occasion_latitude').val(latLng.lat());
+        $('#occasion_longitude').val(latLng.lng());
+      }
+
       getLocation();
 
       // $('#occasion_latitude').val(user_lat)

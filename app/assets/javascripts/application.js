@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require materialize-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var ready;
+ready = function() {
+  Waves.displayEffect();
+  $('select').material_select();
+};
+
+// $(document).ready(ready);
+$(document).on('page:load', ready);
+
+// ready();
