@@ -21,36 +21,129 @@
   </div>
   <div class="field">
     <%= f.label :venue %><br>
-    <%= f.text_field :venue %>
+    <%= f.text_field :venue, class: "placepicker", "data-map-container-id"=> "collapseOne" %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
     <%= f.datetime_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+    <%= f.text_field :latitude, hidden: true %>
+    <%= f.text_field :longitude, hidden: true %>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+<!--<style type="text/css">
+        .placepicker-map {
+        width: 100%;
+        height: 300px;
+      }
+</style> -->
+
+<!-- <div id="collapseOne" class="collapse">
+  <div class="placepicker-map thumbnail"></div>
+</div> -->
+
+    <style>
+      #map {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+
+<div id="map"></div>
+
 <% end %>
-<div id="us2" style="width: 500px; height: 400px;"></div>
-<script>$('#us2').locationpicker({
-  location: {latitude: 46.15242437752303, longitude: 2.7470703125}, 
-  radius: 300,
-  inputBinding: {
-        latitudeInput: $('#occasion_latitude'),
-        longitudeInput: $('#occasion_longitude'),
-        locationNameInput: $('#occasion_venue')
-    }
-  });
-</script>
+<!-- <div id="us2" style="width: 500px; height: 400px;"></div> -->
+    <script>
+      var map;
+      var marker;
+      var user_lat;
+      var user_long;
+      var userLatLong;
+      // var contentString;
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+      function showPosition(position){
+        user_lat =  position.coords.latitude;
+        user_long = position.coords.longitude;
+        userLatLong = {lat: user_lat, lng: user_long};
+        initMap();
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: userLatLong
+        });
+
+        marker = new google.maps.Marker({
+          position: userLatLong,
+          map: map,
+          draggable: true,
+          title: 'You are Here'
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+          content: "<p>UNIVERSITI ISLAM</p>"+"<p>ANTARABANGSA MALAYSIA</p>",
+        });
+
+        marker.addListener('click', function() {
+        infowindow.open(map, marker);
+        });
+
+        marker.addListener('dragend', function(e) {
+        console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+
+        google.maps.event.addListener(map, 'click', function (e) {
+                console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                placeMarker(e.latLng);
+
+            });
+
+        function placeMarker(location) {
+          marker.setPosition(location);
+        }
+
+
+        // map.addListener('click', function(e) {
+        //   console.log(e.getPosition())
+        // });
+      }
+      getLocation();
+
+      // $('#occasion_latitude').val(user_lat)
+      // $('#occasion_longitude').val(user_long)
+
+      //   console.log(position)
+
+        // $('#us2').locationpicker({
+        //   location: {latitude: user_lat, longitude: user_long}, 
+        //   radius: 20,
+        //   inputBinding: {
+            // latitudeInput: $('#occasion_latitude'),
+            // longitudeInput: $('#occasion_longitude'),
+            // locationNameInput: $('#occasion_venue')
+          // }
+        // });
+      // }
+      // getLocation();      
+
+    // var map;
+    // $(".placepicker").placepicker({
+    // placeChanged: function(place) {
+    //   $('#occasion_latitude').val(this.getLocation().latitude)
+    //   $('#occasion_longitude').val(this.getLocation().longitude)
+    //   $('#occasion_venue').val(place.formatted_address)
+    // }
+  // });
+  
+    </script>
