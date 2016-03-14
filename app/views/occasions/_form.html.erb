@@ -12,28 +12,28 @@
   <% end %>
 
     <div class="row">
-    <div class="input-field col l6">
+    <div class="input-field col s12">
       <%= f.text_field :name, autocomplete: 'off', class: 'validate' %>
       <%= f.label :name %>
     </div>
   </div>
 
       <div class="row">
-    <div class="input-field col l6">
+    <div class="input-field col s12">
       <%= f.text_field :description, autocomplete: 'off', class: 'validate' %>
       <%= f.label :description %>
     </div>
   </div>
 
       <div class="row">
-    <div class="input-field col l6">
+    <div class="input-field col s12">
       <%= f.text_field :venue, autocomplete: 'off', class: 'validate' %>
       <%= f.label :venue %>
     </div>
   </div>
 
   <div class="row">
-    <div class="input-field col l6 datetime">
+    <div class="input-field col s12 datetime">
       <%= f.label :date %><br>
       <%= f.datetime_select :date %>
     </div>
@@ -43,10 +43,12 @@
     <%= f.text_field :longitude, hidden: false %>
   
   <div class="row">
-    <div class="col l6">
+    <div class="col s12">
       <%= f.submit class: "btn waves-effect" %>
     </div>
   </div>
+
+  <input placeholder="Find Places" id="map_input" type="text" hidden style="right:100px" class="col s8">
 
 <!--<style type="text/css">
         .placepicker-map {
@@ -61,12 +63,11 @@
 
     <style>
       #map {
-        width: 500px;
         height: 400px;
       }
     </style>
 
-<div id="map"></div>
+<div id="map" class="col s12"></div>
 
 <% end %>
 <!-- <div id="us2" style="width: 500px; height: 400px;"></div> -->
@@ -106,9 +107,46 @@
           title: 'You are Here'
         });
 
-        var infowindow = new google.maps.InfoWindow({
-          content: "<p>UNIVERSITI ISLAM</p>"+"<p>ANTARABANGSA MALAYSIA</p>",
+        // Create the search box and link it to the UI element.
+          var input = document.getElementById('map_input');
+          var searchBox = new google.maps.places.SearchBox(input);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+          console.log('places_changed')
+          // Clear out the old markers.
+            marker.setMap(null);
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+
+            // Create a marker for each place.
+            marker = new google.maps.Marker({
+              map: map,
+              title: place.name,
+              position: place.geometry.location
+            });
+            updateLatLng(marker.getPosition());
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
         });
+
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: "<p>UNIVERSITI ISLAM</p>"+"<p>ANTARABANGSA MALAYSIA</p>",
+        // });
 
         marker.addListener('click', function() {
         infowindow.open(map, marker);
@@ -134,6 +172,8 @@
         // map.addListener('click', function(e) {
         //   console.log(e.getPosition())
         // });
+
+        $('#map_input').show();
       }
 
       function updateLatLng(latLng){
