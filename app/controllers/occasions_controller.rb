@@ -1,10 +1,16 @@
 class OccasionsController < ApplicationController
   before_action :set_occasion, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, except: [:show, :index, :new, :create]
+  before_action :authenticate_user!, except: [:show]
 
   # GET /occasions
   # GET /occasions.json
   def index
-    @occasions = Occasion.all
+    if current_user.organization.nil?
+      redirect_to new_organization_path
+    else
+      @occasions = current_user.organization.occasions
+    end
   end
 
   # GET /occasions/1
@@ -14,7 +20,8 @@ class OccasionsController < ApplicationController
 
   # GET /occasions/new
   def new
-    @occasion = Occasion.new
+    @occasion = current_user.organization.occasions.new
+    @occasion.user = current_user
   end
 
   # GET /occasions/1/edit
@@ -24,7 +31,8 @@ class OccasionsController < ApplicationController
   # POST /occasions
   # POST /occasions.json
   def create
-    @occasion = Occasion.new(occasion_params)
+    @occasion = current_user.organization.occasions.new(occasion_params)
+    @occasion.user = current_user
 
     respond_to do |format|
       if @occasion.save
@@ -65,6 +73,12 @@ class OccasionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_occasion
       @occasion = Occasion.find(params[:id])
+    end
+
+    def check_owner
+      unless current_user == @occasion.user 
+        redirect_to @occasion
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

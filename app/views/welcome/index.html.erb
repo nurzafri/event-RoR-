@@ -1,0 +1,44 @@
+            <!--BEGIN PAGE WRAPPER-->
+            <div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+                <!--BEGIN CONTENT-->
+                <div class="page-content">
+                    <h1>Welcome#index</h1>
+
+                    <p>Find me in app/views/welcome/index.html.erb</p>
+                      
+                      <div class="panel panel-green">
+                        <div class="panel-heading">List Of Events</div>
+                          <div class="panel-body">
+                            
+                            <table class="table table-hover table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Description</th>
+                                  <th>Venue</th>
+                                  <th>Date</th>
+                                  <th>Organizer</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <% @occasions.each do |occasion| %>
+                                  <tr>
+                                    <td><%= occasion.name %></td>
+                                    <td><%= occasion.description %></td>
+                                    <td><%= occasion.venue %></td>
+                                    <td><%= occasion.date %></td>
+                                    <td><%= occasion.organization.name %></td>
+                                    <td><%= link_to 'Info', occasion, class: "btn btn-info btn-xs" %></td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                            </table>
+
+                          </div>
+                        </div>
+                        <br>
+                </div>
+            </div>
+            <!--END PAGE WRAPPER-->

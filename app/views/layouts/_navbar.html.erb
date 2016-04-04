@@ -1,25 +1,26 @@
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-    <li>
-      <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-      <% else %>
-        <%= link_to('Login', new_user_session_path)  %>  
-      <% end %>
-    </li>
-</ul>
-<nav>
-  <div class="container">
-    <div class="nav-wrapper">
-    <%= link_to "Event", root_path, class: 'brand-logo' %>
-      <ul class="right hide-on-med-and-down">
-        <li class="<% if controller.controller_name == "occasions"%>active<%end%>"><%= link_to 'Events', occasions_path, class: 'waves-effect' %></li>
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button waves-effect" href="#!" data-beloworigin="true" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="header-topbar-option-demo" class="page-header-topbar">
+    <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">What</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
+        <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+            
+            <!-- <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
+                <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="Search here..." class="form-control text-white"></div>
+            </form> -->
+            <ul class="nav navbar navbar-top-links navbar-right mbn">
+                <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><span class="hidden-xs"><%= user_signed_in? ? current_user.email : "User" %></span>&nbsp;<span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-user pull-right">
+                        <li>                           
+                            <% if user_signed_in? %>
+                                <%= link_to('<i class="fa fa-key"></i>'.html_safe+'Logout', destroy_user_session_path, :method => :delete) %>
+                            <% else %>
+                                <%= link_to('<i class="fa fa-key"></i>'.html_safe+'Login', new_user_session_path)  %>  
+                            <% end %>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

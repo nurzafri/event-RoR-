@@ -1,0 +1,62 @@
+<!--BEGIN SIDEBAR MENU-->
+<nav id="sidebar" role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" class="navbar-default navbar-static-side" style="min-height: 100%;">
+    <div class="sidebar-collapse menu-scroll">
+        <ul id="side-menu" class="nav">
+            
+            <div class="clearfix"></div>
+            <%= render partial: 'layouts/sidebar_link', locals: {
+                path: root_path,
+                title: "Home",
+                color: "bg-orange",
+                icon: "fa-home"
+            } %>
+
+            <%= render partial: 'layouts/sidebar_link', locals: {
+                path: root_path,
+                title: "Event List & Location",
+                color: "bg-green",
+                icon: "fa-location-arrow"
+            } %>
+<!-- 
+            <%= render partial: 'layouts/sidebar_link', locals: {
+                path: new_occasion_path,
+                title: "Create Event",
+                color: "bg-violet",
+                icon: "fa-edit"
+            } %> -->
+
+            <%= render partial: 'layouts/sidebar_link', locals: {
+                path: occasions_path,
+                title: "My Events",
+                color: "bg-blue",
+                icon: "fa-th-list"
+            } %>
+
+<!--             <li><a href="#"><i class="fa fa-th-list fa-fw">
+                <div class="icon-bg bg-blue"></div>
+            </i><span class="menu-title">My Events</span></a> -->
+                  
+            </li>
+            <li><a href="#"><i class="fa fa-sitemap fa-2">
+                <div class="icon-bg bg-red"></div>
+            </i><span class="menu-title">My Organization</span></a>
+
+            </li>
+            <li><a href="#"><i class="fa fa-users fa-2">
+                <div class="icon-bg bg-yellow"></div>
+            </i><span class="menu-title">Organizations</span></a>
+
+            </li>
+            <li><a href="#"><i class="fa fa-question fa-2">
+                <div class="icon-bg bg-dark"></div>
+            </i><span class="menu-title">FAQ</span></a>
+                                   
+            </li>
+            <li><a href="#"><i class="fa fa-gift fa-fw">
+                <div class="icon-bg bg-grey"></div>
+            </i><span class="menu-title">Extras</span></a>
+            </li>  
+        </ul>
+    </div>
+</nav>
+

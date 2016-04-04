@@ -1,0 +1,93 @@
+<!-- <h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-horizontal'} )  do |f| %>
+<div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+</div>
+
+<% if devise_mapping.rememberable? -%>
+<div class="field">
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %>
+</div>
+<% end -%>
+
+<div class="actions">
+    <%= f.submit "Log in" %>
+</div>
+
+
+
+<% end %> -->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+                <!--BEGIN CONTENT-->
+<div class="page-content">
+<br>
+<div class= "row">      
+<div class="col-sm-offset-3 col-sm-6">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            Login Form</div>
+            <div class="panel-body pan">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-horizontal'} )  do |f| %>
+                    <div class="form-body pal">
+
+
+                        <div class="form-group">
+                          <div class="field">
+                            <%= f.label :email, class: "col-md-3 control-label" %><br />
+                          </div>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa fa-envelope fa-2"></i>
+                                    <%= f.email_field :email, autofocus: "true", class: "form-control" %>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                          <div class="field">
+                            <%= f.label :password, class: "col-md-3 control-label" %><br />
+                          </div>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa fa-lock"></i>
+                                    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% if devise_mapping.rememberable? -%>
+                        <div class="form-group mbn">
+                            <div class="col-md-offset-3 col-md-6">
+                                <div class="checkbox">
+                                    <label><%= f.check_box :remember_me, tabindex: "5" %>&nbsp; Keep me logged in</label>
+                                </div>
+                            </div>
+                        </div>
+                        <% end -%>
+                        
+                    </div>
+                    <div class="form-actions pal">
+                        <div class="form-group mbn">
+                            <div class="col-md-offset-3 col-md-6">
+                                <%= f.submit "Log in", class: "btn btn-primary" %>
+                                <br>
+                                <%= render "devise/shared/links" %>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% end %>
+                </div>
+            </div>
+            </div>
+</div>
+</div>

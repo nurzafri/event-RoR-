@@ -31,8 +31,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @occasion.user %>
+  <strong>Organizer:</strong>
+  <%= @occasion.organization.name %>
 </p>
 
 <%= link_to 'Edit', edit_occasion_path(@occasion) %> |
