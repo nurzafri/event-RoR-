@@ -12,31 +12,38 @@
     </div>
   <% end %>
 
-    <div class="row">
+<!--     <div class="row">
     <div class="input-field col s12">
-      <%= f.text_field :name, autocomplete: 'off', class: 'validate' %>
-      <%= f.label :name %>
+     <%= f.label :name %>
+     <%= f.text_field :name, autocomplete: 'off', class: 'validate' %>
     </div>
   </div>
 
       <div class="row">
     <div class="input-field col s12">
-      <%= f.text_field :description, autocomplete: 'off', class: 'validate' %>
       <%= f.label :description %>
+      <%= f.text_field :description, autocomplete: 'off', class: 'validate' %>
     </div>
   </div>
 
       <div class="row">
     <div class="input-field col s12">
-      <%= f.text_field :venue, autocomplete: 'off', class: 'validate' %>
       <%= f.label :venue %>
+      <%= f.text_field :venue, autocomplete: 'off', class: 'validate' %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12 datetime">
-      <%= f.label :date %><br>
-      <%= f.datetime_select :date %>
+      <%= f.label :time_start %><br>
+      <%= f.datetime_select :time_start %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12 datetime">
+      <%= f.label :time_end %><br>
+      <%= f.datetime_select :time_end %>
     </div>
   </div>
 
@@ -45,11 +52,8 @@
   
   <div class="row">
     <div class="col s12">
-      <%= f.submit class: "btn waves-effect" %>
-    </div>
-  </div>
+      <%= f.submit class: "btn waves-effect" %> -->
 
-  <input placeholder="Find Places" id="map_input" type="text" hidden style="right:100px" class="col s8">
 
 <!--<style type="text/css">
         .placepicker-map {
@@ -68,9 +72,59 @@
       }
     </style>
 
+<div class= "row">      
+<!-- <div class="col-sm-offset-3 col-sm-6"> -->
+<div class="panel panel-violet">
+  <div class="panel-heading">
+    Create Occasion</div>
+    <div class="panel-body pan">
+        <div class="form-body pal">
+          
+              <div class="form-group">
+                <div class="input-icon right">
+                  <%= f.text_field :name, autocomplete: 'off', class: 'validate form-control', placeholder: 'Name' %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-icon right">
+                    <%= f.text_area :description, autocomplete: 'off', class: 'validate form-control', placeholder: 'Description' %></div>
+                  </div>
+
+                <div class="form-group">
+                  <div class="input-icon right">
+                    <%= f.text_field :venue, autocomplete: 'off', class: 'validate form-control', placeholder: 'Venue' %></div>
+                  </div>
+
+                <div class="form-group">
+                  <div class="input-icon right">
+                    <%= f.label :time_start %>
+                    <%= f.datetime_select :time_start %></div>
+                  </div>
+
+                <div class="form-group">
+                  <div class="input-icon right">
+                    <%= f.label :time_end %>
+                    <%= f.datetime_select :time_end %></div>
+                  </div>
+                </div>         
+
+    <%= f.text_field :latitude, hidden: false, class: 'form-control' %>
+    <%= f.text_field :longitude, hidden: false, class: 'form-control' %>
+    <br/>
+
+<input placeholder="Find Places" id="map_input" type="text" hidden style="right:100px" class="col s8">
 <div id="map" class="col s12"></div>
 
+</div>
+                <div class="form-actions text-center pal">
+                  <%= f.submit class: 'btn btn-primary' %>
+                  </div>
+
 <% end %>
+</div>
+</div>
+</div>
 <!-- <div id="us2" style="width: 500px; height: 400px;"></div> -->
     <script>
       var map;

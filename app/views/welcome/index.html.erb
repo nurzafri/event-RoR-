@@ -2,9 +2,9 @@
             <div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
                 <!--BEGIN CONTENT-->
                 <div class="page-content">
-                    <h1>Welcome#index</h1>
+<!--                     <h1>Welcome#index</h1>
 
-                    <p>Find me in app/views/welcome/index.html.erb</p>
+                    <p>Find me in app/views/welcome/index.html.erb</p> -->
                       
                       <div class="panel panel-green">
                         <div class="panel-heading">List Of Events</div>
@@ -16,7 +16,8 @@
                                   <th>Name</th>
                                   <th>Description</th>
                                   <th>Venue</th>
-                                  <th>Date</th>
+                                  <th>Time Start</th>
+                                  <th>Time End</th>
                                   <th>Organizer</th>
                                   <th></th>
                                 </tr>
@@ -28,7 +29,8 @@
                                     <td><%= occasion.name %></td>
                                     <td><%= occasion.description %></td>
                                     <td><%= occasion.venue %></td>
-                                    <td><%= occasion.date %></td>
+                                    <td><%= occasion.time_start %></td>
+                                    <td><%= occasion.time_end %></td>
                                     <td><%= occasion.organization.name %></td>
                                     <td><%= link_to 'Info', occasion, class: "btn btn-info btn-xs" %></td>
                                   </tr>

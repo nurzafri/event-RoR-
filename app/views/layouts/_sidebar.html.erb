@@ -5,7 +5,7 @@
             
             <div class="clearfix"></div>
             <%= render partial: 'layouts/sidebar_link', locals: {
-                path: root_path,
+                path: new_dashboard_path,
                 title: "Home",
                 color: "bg-orange",
                 icon: "fa-home"
@@ -17,13 +17,6 @@
                 color: "bg-green",
                 icon: "fa-location-arrow"
             } %>
-<!-- 
-            <%= render partial: 'layouts/sidebar_link', locals: {
-                path: new_occasion_path,
-                title: "Create Event",
-                color: "bg-violet",
-                icon: "fa-edit"
-            } %> -->
 
             <%= render partial: 'layouts/sidebar_link', locals: {
                 path: occasions_path,
@@ -32,14 +25,12 @@
                 icon: "fa-th-list"
             } %>
 
-<!--             <li><a href="#"><i class="fa fa-th-list fa-fw">
-                <div class="icon-bg bg-blue"></div>
-            </i><span class="menu-title">My Events</span></a> -->
-                  
-            </li>
-            <li><a href="#"><i class="fa fa-sitemap fa-2">
-                <div class="icon-bg bg-red"></div>
-            </i><span class="menu-title">My Organization</span></a>
+            <%= render partial: 'layouts/sidebar_link', locals: {
+                path: organizations_path,
+                title: "My Organization",
+                color: "bg-red",
+                icon: "fa fa-sitemap fa-2"
+            } %>
 
             </li>
             <li><a href="#"><i class="fa fa-users fa-2">

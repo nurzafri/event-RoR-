@@ -1,3 +1,8 @@
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+<!--BEGIN CONTENT-->
+<div class="page-content">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -40,3 +45,5 @@
   <%= @organization.status %>
 </p>
 
+</div>
+</div>

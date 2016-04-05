@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404111250) do
+ActiveRecord::Schema.define(version: 20160404144413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,8 @@ ActiveRecord::Schema.define(version: 20160404111250) do
     t.integer  "organization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.date     "date"
-    t.time     "time_start"
-    t.time     "time_end"
+    t.datetime "time_start"
+    t.datetime "time_end"
   end
 
   add_index "occasions", ["organization_id"], name: "index_occasions_on_organization_id", using: :btree

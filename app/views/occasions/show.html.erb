@@ -1,3 +1,8 @@
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+<!--BEGIN CONTENT-->
+<div class="page-content">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -16,8 +21,13 @@
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @occasion.date %>
+  <strong>Time Start:</strong>
+  <%= @occasion.time_start %>
+</p>
+
+<p>
+  <strong>Time End:</strong>
+  <%= @occasion.time_end %>
 </p>
 
 <p>
@@ -37,3 +47,6 @@
 
 <%= link_to 'Edit', edit_occasion_path(@occasion) %> |
 <%= link_to 'Back', occasions_path %>
+
+</div>
+</div>

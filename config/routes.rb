@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :dashboard
   resources :organizations
   resources :occasions
   devise_for :users
