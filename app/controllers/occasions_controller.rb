@@ -1,6 +1,6 @@
 class OccasionsController < ApplicationController
   before_action :set_occasion, only: [:show, :edit, :update, :destroy]
-  before_action :check_owner, except: [:show, :index, :new, :create]
+  before_action :check_owner, except: [:all, :show, :index, :new, :create]
   before_action :authenticate_user!, except: [:show]
 
   # GET /occasions
@@ -11,6 +11,10 @@ class OccasionsController < ApplicationController
     else
       @occasions = current_user.organization.occasions
     end
+  end
+
+  def all
+    @occasions = Occasion.all
   end
 
   # GET /occasions/1

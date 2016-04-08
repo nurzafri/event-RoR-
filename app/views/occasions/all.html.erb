@@ -1,0 +1,51 @@
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+<!--BEGIN CONTENT-->
+<div class="page-content">
+
+<p id="notice"><%= notice %></p>
+
+
+  <div class="panel panel-green">
+    <div class="panel-heading">My Events</div>
+      <div class="panel-body">
+
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Venue</th>
+              <th>Time Start</th>
+              <th>Time End</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @occasions.each do |occasion| %>
+              <tr>
+                <td><%= occasion.name %></td>
+                <td><%= occasion.description %></td>
+                <td><%= occasion.venue %></td>
+                <td><%= occasion.time_start %></td>
+                <td><%= occasion.time_end %></td>
+                <td><%= link_to 'Show', occasion %></td>
+                <td><%= link_to 'Edit', edit_occasion_path(occasion) %></td>
+                <td><%= link_to 'Remove', occasion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Add Occasion', new_occasion_path, class: "btn btn-primary col-md-offset-5" %>
+      </div>     
+
+    </div>
+ 
+
+<br>
+
+
+
+</div>
+</div>

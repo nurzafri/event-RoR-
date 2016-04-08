@@ -14,7 +14,7 @@
       var events = [];
 
       $(document).ready(function() {
-        var req = $.get("<%= occasions_path format: :json %>");
+        var req = $.get("<%= all_occasions_path format: :json %>");
 
         $.when(req).done(function(res) {
           events = res;
@@ -34,24 +34,36 @@
           map: map,
           animation: google.maps.Animation.DROP,
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: 'You are here'     
+        });
         user_marker.addListener('click', toggleBounce);
-
+        user_marker.addListener('click', function() {
+        infowindow.open(map, user_marker);});
         placeMarkers(events);
       }
 
-      function placeMarker(location) {
+      function placeMarker(location, event_title, event_venue) {
+        var contentString = '<h6><b>'+ event_title +'</b></h6><p>' + 'Venue: '+ event_venue + '</p>'
         var marker = new google.maps.Marker({
           icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
           position: location,
           map: map,
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString     
+        });
         markers.push(marker)
+        marker.addListener('click', function() {
+        infowindow.open(map, marker);});
       }
 
       function placeMarkers(events) {
         for (var i = events.length - 1; i >= 0; i--) {
           var location = {lat: JSON.parse(events[i].latitude), lng: JSON.parse(events[i].longitude)}
-          placeMarker(location);
+          var event_title = events[i].name;
+          var event_venue = events[i].venue;
+          placeMarker(location, event_title, event_venue);
         };
       }
 
@@ -76,10 +88,10 @@
       }
 
       function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
+        if (user_marker.getAnimation() !== null) {
+          user_marker.setAnimation(null);
         } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+          user_marker.setAnimation(google.maps.Animation.BOUNCE);
         }
       }
   

@@ -4,10 +4,19 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organization = current_user.organization
+    if current_user.organization.nil?
+      redirect_to new_organization_path
+    else
+      @organization = current_user.organization
+    end
   end
 
   def show
+    if current_user.organization.nil?
+      redirect_to new_organization_path
+    else
+      @organization = current_user.organization
+    end
   end
 
   # GET /organizations/new
