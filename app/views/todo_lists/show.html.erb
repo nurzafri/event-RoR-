@@ -1,0 +1,20 @@
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+<!--BEGIN CONTENT-->
+<div class="page-content">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @todo_list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @todo_list.description %>
+</p>
+
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Back', todo_lists_path %>
+</div>
+</div>

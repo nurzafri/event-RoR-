@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404144413) do
+ActiveRecord::Schema.define(version: 20160407090400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,26 @@ ActiveRecord::Schema.define(version: 20160404144413) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "todo_items", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "todo_list_id"
+    t.boolean  "done"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id", using: :btree
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -94,5 +114,7 @@ ActiveRecord::Schema.define(version: 20160404144413) do
   add_foreign_key "occasions", "organizations"
   add_foreign_key "occasions", "users"
   add_foreign_key "organizations", "users"
+  add_foreign_key "todo_items", "todo_lists"
+  add_foreign_key "todo_lists", "users"
   add_foreign_key "users", "roles"
 end

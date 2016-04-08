@@ -3,8 +3,91 @@
 <!--BEGIN CONTENT-->
 <div class="page-content">
 <h1>Dashboard#new</h1>
-<p>Find me in app/views/dashboard/new.html.erb</p>
 
+<h2>Events Around You</h2>
+<div id="map" class="col s12" style="height: 300px;width: 100%;"></div>
+
+<script>
+      var map;
+      var markers = [];
+      var user_marker;
+      var events = [];
+
+      $(document).ready(function() {
+        var req = $.get("<%= occasions_path format: :json %>");
+
+        $.when(req).done(function(res) {
+          events = res;
+        })
+
+        getLocation();
+      })
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: userLatLong
+        });
+        user_marker = new google.maps.Marker({
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          position: userLatLong,
+          map: map,
+          animation: google.maps.Animation.DROP,
+        });
+        user_marker.addListener('click', toggleBounce);
+
+        placeMarkers(events);
+      }
+
+      function placeMarker(location) {
+        var marker = new google.maps.Marker({
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          position: location,
+          map: map,
+        });
+        markers.push(marker)
+      }
+
+      function placeMarkers(events) {
+        for (var i = events.length - 1; i >= 0; i--) {
+          var location = {lat: JSON.parse(events[i].latitude), lng: JSON.parse(events[i].longitude)}
+          placeMarker(location);
+        };
+      }
+
+      var user_lat;
+      var user_long;
+      var userLatLong;
+      // var contentString;
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+      function showPosition(position){
+        user_lat =  position.coords.latitude;
+        user_long = position.coords.longitude;
+        userLatLong = {lat: user_lat, lng: user_long};
+        initMap();
+      }
+
+      function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
+  
+    </script>
+    </script>
+
+
+<h2>My Planner</h2>
     <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
@@ -112,8 +195,7 @@
     </script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
-  </head>
-  <body>
+
     <div id="authorize-div" style="display: none">
       <span>Authorize access to Google Calendar API</span>
       <!--Button for the user to click to initiate auth sequence -->
@@ -123,5 +205,32 @@
     </div>
     <pre id="output"></pre>
 
+ <h2>Todo List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_lists.each do |todo_list| %>
+      <tr>
+        <td><%= todo_list.title %></td>
+        <td><%= todo_list.description %></td>
+        <td><%= link_to 'Show', todo_list %></td>
+        <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
+        <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+  <%= link_to 'New Todo list', new_todo_list_path %>
+<div style="width:100%; height:100%">
+<script id="cid0020000121016808980" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 250px;">{"handle":"fypshowcase1516","arch":"js","styles":{"a":"000066","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000066","l":"000066","m":"000066","n":"FFFFFF","p":"10","q":"000066","r":100,"fwtickm":1}}</script>
+</div>
 </div>
 </div>

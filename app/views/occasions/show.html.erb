@@ -1,3 +1,4 @@
+
 <!--BEGIN PAGE WRAPPER-->
 <div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
 <!--BEGIN CONTENT-->
@@ -47,6 +48,128 @@
 
 <%= link_to 'Edit', edit_occasion_path(@occasion) %> |
 <%= link_to 'Back', occasions_path %>
+
+    <style>
+      #map {
+        height: 400px;
+      }
+    </style>
+
+    <br/>
+
+<div id="map" class="col s12"></div>
+
+<script>
+      var map;
+      var marker;
+      var user_lat;
+      var user_long;
+      var userLatLong;
+      // var contentString;
+
+      // function getLocation() {
+      //   if (navigator.geolocation) {
+      //     navigator.geolocation.getCurrentPosition(showPosition);
+      //   } else {
+      //     alert("Geolocation is not supported by this browser.");
+      //   }
+      // }
+
+      function showPosition(position){
+        user_lat =  <%= @occasion.latitude %>;
+        user_long = <%= @occasion.longitude %>;
+        userLatLong = {lat: user_lat, lng: user_long};
+        initMap();
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: userLatLong
+        });
+
+        marker = new google.maps.Marker({
+          position: userLatLong,
+          map: map,
+        });
+
+        // // Create the search box and link it to the UI element.
+        //   var input = document.getElementById('map_input');
+        //   var searchBox = new google.maps.places.SearchBox(input);
+        //   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        //   searchBox.addListener('places_changed', function() {
+        //   var places = searchBox.getPlaces();
+
+        //   if (places.length == 0) {
+        //     return;
+        //   }
+        //   console.log('places_changed')
+        //   // Clear out the old markers.
+        //     marker.setMap(null);
+
+        //   // For each place, get the icon, name and location.
+        //   var bounds = new google.maps.LatLngBounds();
+        //   places.forEach(function(place) {
+
+        //     // Create a marker for each place.
+        //     marker = new google.maps.Marker({
+        //       map: map,
+        //       title: place.name,
+        //       position: place.geometry.location
+        //     });
+        //     updateLatLng(marker.getPosition());
+
+        //     if (place.geometry.viewport) {
+        //       // Only geocodes have viewport.
+        //       bounds.union(place.geometry.viewport);
+        //     } else {
+        //       bounds.extend(place.geometry.location);
+        //     }
+        //   });
+        //   map.fitBounds(bounds);
+        // });
+
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: "<p>UNIVERSITI ISLAM</p>"+"<p>ANTARABANGSA MALAYSIA</p>",
+        // });
+
+        marker.addListener('click', function() {
+        infowindow.open(map, marker);
+        });
+
+        // marker.addListener('dragend', function(e) {
+        // console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        // updateLatLng(e.latLng);
+        // });
+
+        // google.maps.event.addListener(map, 'click', function (e) {
+        //         console.log("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        //         placeMarker(e.latLng);
+        //         updateLatLng(e.latLng);
+
+        //     });
+
+        function placeMarker(location) {
+          marker.setPosition(location);
+        }
+
+
+        // map.addListener('click', function(e) {
+        //   console.log(e.getPosition())
+        // });
+
+        // $('#map_input').show();
+      }
+
+      // function updateLatLng(latLng){
+      //   $('#occasion_latitude').val(latLng.lat());
+      //   $('#occasion_longitude').val(latLng.lng());
+      // }
+
+      showPosition();
+  
+    </script>
 
 </div>
 </div>

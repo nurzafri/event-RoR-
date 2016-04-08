@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :occasions, through: :organization
   has_one :organization
+
+  # optional features
+  has_many :todo_lists
 end

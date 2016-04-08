@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
-  def new
+  def index
+  	@todo_lists = current_user.todo_lists
   end
 end

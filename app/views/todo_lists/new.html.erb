@@ -1,0 +1,11 @@
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
+<!--BEGIN CONTENT-->
+<div class="page-content">
+<h1>New Todo List</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', todo_lists_path %>
+</div>
+</div>
