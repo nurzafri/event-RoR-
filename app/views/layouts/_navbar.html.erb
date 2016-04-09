@@ -9,7 +9,7 @@
                 <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="Search here..." class="form-control text-white"></div>
             </form> -->
             <ul class="nav navbar navbar-top-links navbar-right mbn">
-                <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><span class="hidden-xs"><%= user_signed_in? ? current_user.email : "User" %></span>&nbsp;<span class="caret"></span></a>
+                <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><span class="hidden-xs"><%= user_signed_in? ? ((image_tag avatar_url(current_user, 200)).html_safe + current_user.email) : "User" %></span>&nbsp;<span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-user pull-right">
                         <li>                           
                             <% if user_signed_in? %>
