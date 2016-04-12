@@ -3174,10 +3174,10 @@ ul.nav.nav-tabs li.active a {
   color: #fff;
 }
 body.sidebar-colors #wrapper {
-  background-color: #FFFFFF;
+  background-color: #1E1E1E;
 }
 body.sidebar-colors #wrapper #sidebar {
-  background-color: #FFFFFF;
+  background-color: #1E1E1E;
 }
 body.sidebar-colors #wrapper #sidebar ul#side-menu li {
   border-bottom: 1px solid #e5e5e5;

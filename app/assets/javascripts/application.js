@@ -13,17 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require moment
-//= require bootstrap-datetimepicker
-
-
-// var ready;
-// ready = function() {
-//   Waves.displayEffect();
-//   $('select').material_select();
-// };
-
-// $(document).ready(ready);
-// $(document).on('page:load', ready);
-
-// ready();
+//= require_tree .
