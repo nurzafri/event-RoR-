@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   resources :todo_lists
   resources :organizations
   resources :occasions do
@@ -10,7 +11,9 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get "form_build/"=> "form_build#index"
   get "dashboard/" => "dashboard#index"
+  get 'fmodel/' => "fmodel#index"
   root "welcome#index"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

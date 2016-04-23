@@ -1,8 +1,83 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <!--BEGIN PAGE WRAPPER-->
 <div id="page-wrapper" style="<%= 'margin: 0' if !user_signed_in? %>">
 <!--BEGIN CONTENT-->
 <div class="page-content">
-<h1>Dashboard#new</h1>
+
+<script type="text/javascript">
+
+
+  function getCookie(name)
+  {
+    var re = new RegExp(name + "=([^;]+)");
+    var value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
+  }
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $("#todo").remove();
+            $("#chat").remove();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $("#gplan").remove();
+            $("#chat").remove();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $("#gplan").remove();
+            $("#todo").remove();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $("#chat").remove();
+        });
+  }}}
+
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $("#todo").remove();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $("#gplan").remove();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $("#gplan").remove();
+            $("#todo").remove();
+            $("#chat").remove();
+        });
+  }}}
+
+
+</script>
 
 <h2>Events Around You</h2>
 <div id="map" class="col s12" style="height: 300px;width: 100%;"></div>
@@ -96,10 +171,11 @@
       }
   
     </script>
-    </script>
 
+<br/>
+<div id="gplan">
+    <h2>My Planner</h2>
 <!-- Optional Feature 1: Google Planner -->
-<h2>My Planner</h2>
     <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
@@ -208,7 +284,7 @@
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
 
-    <div id="authorize-div" style="display: none">
+    <div name="gplan" id="authorize-div" style="display: none">
       <span>Authorize access to Google Calendar API</span>
       <!--Button for the user to click to initiate auth sequence -->
       <button id="authorize-button" onclick="handleAuthClick(event)">
@@ -216,9 +292,13 @@
       </button>
     </div>
     <pre id="output"></pre>
+    <br/>
+  </div>
+
 
 <!-- Optional Feature 2: Todo List -->
- <h2>Todo List</h2>
+<div id="todo"> 
+<h2 id="todo">Todo List</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -238,15 +318,22 @@
         <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <tr><%= link_to 'New Todo list', new_todo_list_path %></tr>
   </tbody>
-
 </table>
-  <%= link_to 'New Todo list', new_todo_list_path %>
+<br>
+</div>
 
 <!-- Optional Feature 3: ChatBox, using chatango.com (3rd party app) -->
-<div style="width:100%; height:100%">
-<script id="cid0020000121016808980" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 250px;">{"handle":"fypshowcase1516","arch":"js","styles":{"a":"000066","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000066","l":"000066","m":"000066","n":"FFFFFF","p":"10","q":"000066","r":100,"fwtickm":1}}</script>
-</div>
+    <div id="chat" style="width:100%; height:100%">
+
+        <h2>Chat</h2>
+
+        <script id="cid0020000121016808980" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 250px;">
+        {"handle":"fypshowcase1516","arch":"js","styles":{"a":"000066","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000066","l":"000066","m":"000066","n":"FFFFFF","p":"10","q":"000066","r":100,"fwtickm":1}}
+        </script>
+
+    </div>
 
 </div>
 </div>

@@ -1,0 +1,31 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<h1>Fmodel#index</h1>
+<p>Find me in app/views/fmodel/index.html.erb</p>
+
+<%= link_to 'Test', root_path %>
+
+	<form name="featureForm" method="get">
+		<input type="checkbox" name="feature1" id="f1" value="" hidden>
+		<input type="checkbox" name="feature2" id="f2" value="" hidden>
+		<input type="checkbox" name="feature3" id="f3" value="" hidden>
+	</form>
+
+<script type="text/javascript">
+
+  function getCookie(name)
+  {
+    var re = new RegExp(name + "=([^;]+)");
+    var value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
+  }
+
+  if(feature1 = getCookie("feature1")) document.featureForm.feature1.value = feature1;
+  if(feature2 = getCookie("feature2")) document.featureForm.feature2.value = feature2;
+  if(feature3 = getCookie("feature3")) document.featureForm.feature3.value = feature3;
+
+  document.write(getCookie("feature1"));
+  document.write(getCookie("feature2"));
+  document.write(getCookie("feature3"));
+
+</script>

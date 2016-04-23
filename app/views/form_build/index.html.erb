@@ -1,0 +1,121 @@
+<div class="main-content">
+
+        <!-- You only need this form and the form-basic.css -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- <form>
+    <input type="checkbox" id="bk" name="vehicle" value="Bike">I have a bike<br></br>
+    <input type="checkbox" id="cr" name="vehicle" value="Car">I have a car<br></br> 
+     <input type="submit" value="   Print   " size="30" onClick="return checkbox();">
+</form> 
+ -->
+        <form name="featureForm" method="get" action="<%= fmodel_path %>" onsubmit="return checkbox();">
+
+            <div class="form-row">
+                <label><span>Optional Features</span></label>
+                <div class="form-checkbox">
+
+                    <div>
+                        <label>
+                            <input type="checkbox" name="feature1" id="f1" value="gplan">
+                            <span>Google Planner</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" name="feature2" id="f2" value="todo">
+                            <span>Todo-List</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" name="feature3" id="f3" value="chat">
+                            <span>ChatBox</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <a href="" class="btn btn-primary">Back</a>
+                <input type="submit" value="Set Cookies">
+            </div>
+
+        </form>
+
+
+<script type="text/javascript">
+
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); // plus 30 days
+
+    function checkbox()
+    {
+        var gplan=document.getElementById("f1").checked;
+        var todo=document.getElementById("f2").checked;
+        var chat=document.getElementById("f3").checked;
+        if(gplan){
+            setCookie("feature1", "gplan");
+            setCookie("feature2", "no")
+            setCookie("feature3", "no");
+        }
+
+        if(todo){
+            setCookie("feature1", "no");
+            setCookie("feature2", "todo")
+            setCookie("feature3", "no");
+        }
+
+        if(chat){
+            setCookie("feature1", "no");
+            setCookie("feature2", "no")
+            setCookie("feature3", "chat");
+        }
+
+        if(gplan && todo){
+            setCookie("feature1", "gplan");
+            setCookie("feature2", "todo")
+            setCookie("feature3", "no");
+        }
+
+        if(gplan && chat){
+            setCookie("feature1", "gplan");
+            setCookie("feature2", "no")
+            setCookie("feature3", "chat");
+        }
+
+        if(todo && chat){
+            setCookie("feature1", "no");
+            setCookie("feature2", "todo")
+            setCookie("feature3", "chat");
+        }
+
+        if(gplan && todo && chat){
+            setCookie("feature1", "gplan");
+            setCookie("feature2", "todo")
+            setCookie("feature3", "chat");
+        }
+
+        if(!gplan && !todo && !chat){
+            setCookie("feature1", "no");
+            setCookie("feature2", "no")
+            setCookie("feature3", "no");
+        }          
+
+    }
+
+  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+  // Please acknowledge use of this code by including this header.
+
+  function setCookie(name, value)
+  {
+    document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+  }
+
+</script>
+
+    </div>
