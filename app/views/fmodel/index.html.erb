@@ -1,15 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FODA</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<h1>Fmodel#index</h1>
-<p>Find me in app/views/fmodel/index.html.erb</p>
+</head>
 
-<%= link_to 'Test', root_path %>
+<div>
+    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+        <div class="page-header pull-left">
+            <div class="page-title">Step 2: Generated Feature Modelling</div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
 
-	<form name="featureForm" method="get">
-		<input type="checkbox" name="feature1" id="f1" value="" hidden>
-		<input type="checkbox" name="feature2" id="f2" value="" hidden>
-		<input type="checkbox" name="feature3" id="f3" value="" hidden>
-	</form>
+<!-- <img id="a" style="display:none; height:640px; width:480px " src="/assets/a.png">
+<img id="b" style="display:none; height:200px; width:200px " src="/assets/b.png">
+<img id="c" style="display:none; height:200px; width:200px " src="/assets/c.png">
+<img id="d" style="display:none; height:200px; width:200px " src="/assets/d.png">
+<img id="e" style="display:none; height:200px; width:200px " src="/assets/e.png">
+<img id="f" style="display:none; height:200px; width:200px " src="/assets/f.png">
+<img id="g" style="display:none; height:200px; width:200px " src="/assets/g.png">
+<img id="h" style="display:none; height:200px; width:200px " src="/assets/h.png">
+</div>
+ -->
+  <div class="col-lg-12 col-sm-offset-4" >
+      <div class="col-lg-4">
+          <div class="member-team">
+          <img id="a" style="display:none" src="/assets/a.png" class="img-responsive"/>
+          <img id="b" style="display:none" src="/assets/b.png" class="img-responsive"/>
+          <img id="c" style="display:none" src="/assets/c.png" class="img-responsive"/>
+          <img id="d" style="display:none" src="/assets/d.png" class="img-responsive"/>
+          <img id="e" style="display:none" src="/assets/e.png" class="img-responsive"/>
+          <img id="f" style="display:none" src="/assets/f.png" class="img-responsive"/>
+          <img id="g" style="display:none" src="/assets/g.png" class="img-responsive"/>
+          <img id="h" style="display:none" src="/assets/h.png" class="img-responsive"/>
+              <h3  style="text-align:center">Your Generated Feature Modeling</h3>
+              <div class="text-center pal">
+                    <a href="<%= root_path %>" class="btn btn-primary">Test</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
 <script type="text/javascript">
 
@@ -20,12 +58,75 @@
     return (value != null) ? unescape(value[1]) : null;
   }
 
-  if(feature1 = getCookie("feature1")) document.featureForm.feature1.value = feature1;
-  if(feature2 = getCookie("feature2")) document.featureForm.feature2.value = feature2;
-  if(feature3 = getCookie("feature3")) document.featureForm.feature3.value = feature3;
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $('#a').show();
+        });
+  }}}
 
-  document.write(getCookie("feature1"));
-  document.write(getCookie("feature2"));
-  document.write(getCookie("feature3"));
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $('#b').toggle();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $('#c').toggle();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $('#d').toggle();
+        });
+  }}}
+
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $('#e').toggle();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $('#f').toggle();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "no"){
+    if(feature2 = getCookie("feature2") == "no"){
+      if(feature3 = getCookie("feature3") == "no"){
+        $(document).ready(function(){
+            $('g').toggle();
+        });
+  }}}
+
+  if(feature1 = getCookie("feature1") == "gplan"){
+    if(feature2 = getCookie("feature2") == "todo"){
+      if(feature3 = getCookie("feature3") == "chat"){
+        $(document).ready(function(){
+            $('#h').toggle();
+        });
+  }}}
 
 </script>
+
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/bootstrap-hover-dropdown.js"></script>
+
+</body>
+</html>

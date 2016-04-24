@@ -1,52 +1,63 @@
-<div class="main-content">
-
-        <!-- You only need this form and the form-basic.css -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FODA</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<div>
 
-<!-- <form>
-    <input type="checkbox" id="bk" name="vehicle" value="Bike">I have a bike<br></br>
-    <input type="checkbox" id="cr" name="vehicle" value="Car">I have a car<br></br> 
-     <input type="submit" value="   Print   " size="30" onClick="return checkbox();">
-</form> 
- -->
-        <form name="featureForm" method="get" action="<%= fmodel_path %>" onsubmit="return checkbox();">
+    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+        <div class="page-header pull-left">
+            <div class="page-title">Step 1: Optional Features</div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
 
-            <div class="form-row">
-                <label><span>Optional Features</span></label>
-                <div class="form-checkbox">
+<div class="page-content">
 
-                    <div>
-                        <label>
-                            <input type="checkbox" name="feature1" id="f1" value="gplan">
-                            <span>Google Planner</span>
-                        </label>
+<div class="col-sm-offset-4 col-sm-4">
+<div class="panel panel-green">
+    <div class="panel-heading">Choose Your Desired Features</div>
+        <div class="panel-body pan">
+            <form name="featureForm" method="get" action="<%= fmodel_path %>" onsubmit="return checkbox();">
+                <div class="form-body pal">
+                
+                    <div class="form-group">
+                    <label>
+                        <div class="icheckbox_minimal-grey" style="position: relative;"><input name="feature1" id="f1" value="gplan" tabindex="5" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>&nbsp; Google Planner
+                    </label>
                     </div>
 
-                    <div>
-                        <label>
-                            <input type="checkbox" name="feature2" id="f2" value="todo">
-                            <span>Todo-List</span>
-                        </label>
+                    <div class="form-group">
+                    <label>
+                        <div class="icheckbox_minimal-grey" style="position: relative;"><input name="feature2" id="f2" value="todo" tabindex="5" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>&nbsp; Todo-List
+                    </label>
                     </div>
 
-                    <div>
-                        <label>
-                            <input type="checkbox" name="feature3" id="f3" value="chat">
-                            <span>ChatBox</span>
-                        </label>
+                    <div class="form-group">
+                    <label>
+                        <div class="icheckbox_minimal-grey" style="position: relative;"><input name="feature3" id="f3" value="chat" tabindex="5" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>&nbsp; Chatbox
+                    </label>
                     </div>
 
+                    <div class="form-actions text-center pal">
+                    <a href="" class="btn btn-primary">Back</a>
+                    <input type="submit"  class="btn btn-primary" value="Next">
+                    </div>
                 </div>
-            </div>
-
-            <div>
-                <a href="" class="btn btn-primary">Back</a>
-                <input type="submit" value="Set Cookies">
-            </div>
-
-        </form>
-
+            </form>
+        </div>
+</div>
+</div>
+</body>
+</html>
 
 <script type="text/javascript">
 
@@ -118,4 +129,23 @@
 
 </script>
 
-    </div>
+
+    <script src="/assets/jquery-1.10.2.min.js"></script>
+    <script src="/assets/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/jquery-ui.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+    <script src="/assets/bootstrap-hover-dropdown.js"></script>
+    <script src="/assets/html5shiv.js"></script>
+    <script src="/assets/respond.min.js"></script>
+    <script src="/assets/jquery.metisMenu.js"></script>
+    <script src="/assets/jquery.slimscroll.js"></script>
+    <script src="/assets/jquery.cookie.js"></script>
+    <script src="/assets/icheck.min.js"></script>
+    <script src="/assets/custom.min.js"></script>
+    <script src="/assets/jquery.menu.js"></script>
+    <script src="/assets/pace.min.js"></script>
+    <script src="/assets/holder.js"></script>
+    <script src="/assets/responsive-tabs.js"></script>
+    <script src="/assets/zabuto_calendar.min.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <script src="/assets/main.js"></script>
