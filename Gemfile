@@ -48,7 +48,7 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:ruby,:ruby_18, :ruby_19, :ruby_20, :mri, :mri_18, :mri_19, :mri_20, :rbx, :jruby,:mswin, :mingw, :mingw_18, :mingw_19, :mingw_20]
 
 gem 'momentjs-rails', '>= 2.9.0'
 
